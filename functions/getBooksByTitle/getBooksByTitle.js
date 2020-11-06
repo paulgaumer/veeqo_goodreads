@@ -7,7 +7,7 @@ const getBooksByTitle = async (title) => {
   const res = await fetch(url);
   const text = await res.text();
   const jsonObj = parser.parse(text, options);
-  const books = jsonObj.GoodreadsResponse?.search?.results?.work;
+  const books = jsonObj.GoodreadsResponse.search.results.work;
   return books;
 };
 
