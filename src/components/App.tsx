@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
-import Home from "./components/Home"
-import About from "./components/About"
-import Posts from "./components/Posts"
-import PostsLists from "./components/PostsLists"
-import Post from "./components/Post"
+import Home from "./Home"
+import About from "./About"
+import Posts from "./Posts"
+import PostsLists from "./PostsLists"
+import Post from "./Post"
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
