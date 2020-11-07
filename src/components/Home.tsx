@@ -1,25 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
+import { ContextStore } from "../context/store"
+import { getBooks } from "../api/requests"
 
 function Home() {
-  const [books, setBooks] = useState<any[]>([])
   const [searchInput, setSearchInput] = useState<string>("")
+  const { state, dispatch } = useContext(ContextStore)
+  const { books } = state
 
-  useEffect(() => {
-    const getBooksByTitle = async (keyword: string) => {
-      const res = await fetch(`/.netlify/functions/getBooksByKeyword?keyword=${keyword}`);
-      const data = await res.json();
-      console.log(data)
-      setBooks(data.books);
-    }
-    searchInput !== "" && getBooksByTitle(searchInput)
-  }, [searchInput])
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const keyword = e.target.value
+    setSearchInput(keyword)
 
-  const handleChange = (e: any) => {
-    setSearchInput(e.target.value)
+    /**
+     * Set the requested lis of books into context
+     */
+    dispatch({
+      type: "SET_BOOKS",
+      payload: await getBooks(keyword)
+    })
+
+    /**
+     * Reset the author into context
+     */
+    dispatch({
+      type: "SET_AUTHOR",
+      payload: null
+    })
   }
-
 
   return (
     <div style={{ padding: 20 }}>
@@ -32,7 +41,9 @@ function Home() {
         onChange={handleChange} />
       <ul className="list-disc list-inside mt-20">
         {books.map((book) => {
-          return <li><Link to={`/authors/${book.author.id}`}>{book.title}</Link></li>
+          return <li key={book.id}>
+            <Link to={`/authors/${book.author.id}`}>{book.title}</Link>
+          </li>
         })}
       </ul>
     </div>

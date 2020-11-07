@@ -1,7 +1,10 @@
+import { IAuthor } from "../types/author"
+import { IBook } from "../types/book"
+
 // TYPES
 export interface IState {
-  books: any;
-  author: any
+  books: IBook[];
+  author: IAuthor | null
 }
 
 interface ISetBooks {

@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import { useParams } from 'react-router-dom';
-// import AuthorsData from "../data/Authors"
+import { ContextStore } from "../context/store"
+import { getAuthorInfo } from "../api/requests"
 
 function Author() {
 
-  const [author, setAuthor] = useState<any>()
   const { id } = useParams();
+  const { state, dispatch } = useContext(ContextStore)
+  const { author } = state
 
   useEffect(() => {
-    const getAuthorInfo = async (authorId: string) => {
-      const res = await fetch(`/.netlify/functions/getAuthorInfo?authorId=${authorId}`);
-      const data = await res.json();
-      console.log(data)
-      setAuthor(data.author);
+    const setAuthor = async () => {
+      dispatch({
+        type: "SET_AUTHOR",
+        payload: await getAuthorInfo(id)
+      })
     }
-    getAuthorInfo(id)
-  }, [])
+    setAuthor()
+  }, [id, dispatch])
 
-  // const post = AuthorsData[id];
-  // const { name, description } = post;
 
   return (
     <div style={{ padding: 20 }}>
