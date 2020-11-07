@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/output/tailwind.output.css';
 import App from './components/App';
+import { ContextStoreProvider } from "./context/store"
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ContextStoreProvider>
+      <App />
+    </ContextStoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
