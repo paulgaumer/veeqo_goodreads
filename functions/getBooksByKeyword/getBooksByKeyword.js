@@ -33,11 +33,23 @@ const getBooksByKeyword = async (keyword, type = 'title', page = '1') => {
   return sortBooks(books);
 };
 
+const getBooksByIsbn = async (keyword) => {
+  const url = `https://www.goodreads.com/search.xml?key=BzOzyH7EB1GpjXuKD6BNw&q=${keyword}`;
+  const res = await fetch(url);
+  const text = await res.text();
+  const jsonObj = parser.parse(text, options);
+  const book = jsonObj.GoodreadsResponse.search.results.work;
+  return sortBooks([book]);
+};
+
 exports.handler = async (event) => {
-  const keyword = event.queryStringParameters.keyword;
+  const { keyword, type } = event.queryStringParameters;
 
   try {
-    const books = await getBooksByKeyword(keyword);
+    const books =
+      type === 'isbn'
+        ? await getBooksByIsbn(keyword)
+        : await getBooksByKeyword(keyword, type);
     return {
       statusCode: 200,
       body: JSON.stringify({ books }),

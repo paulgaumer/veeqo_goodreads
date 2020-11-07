@@ -1,6 +1,6 @@
-export const getBooks = async (keyword: string) => {
+export const getBooks = async (keyword: string, type: string) => {
   const res = await fetch(
-    `/.netlify/functions/getBooksByKeyword?keyword=${keyword}`
+    `/.netlify/functions/getBooksByKeyword?keyword=${keyword}&type=${type}`
   );
   const data = await res.json();
   return data.books;

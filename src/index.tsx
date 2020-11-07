@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/output/tailwind.output.css';
-import App from './components/App';
+import App from './containers/App';
 import { ContextStoreProvider } from "./context/store"
 import reportWebVitals from './reportWebVitals';
 

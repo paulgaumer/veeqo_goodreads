@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from "./Home"
 import Author from "./Author"
-import Layout from "./Layout"
+import Layout from "../components/layout/Layout"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
