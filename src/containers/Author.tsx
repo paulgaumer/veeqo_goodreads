@@ -2,6 +2,9 @@ import React, { useEffect, useContext } from "react"
 import { useParams } from 'react-router-dom';
 import { ContextStore } from "../context/store"
 import { getAuthorInfo } from "../api/requests"
+import AuthorHero from "../components/hero/AuthorHero"
+import AuthorDescription from "../components/descriptions/AuthorDescription"
+import AuthorBooksList from "../components/books/AuthorBooksList"
 
 function Author() {
 
@@ -21,17 +24,24 @@ function Author() {
 
 
   return (
-    <div style={{ padding: 20 }}>
+    <>
       {!author &&
         <p>Loading...</p>
       }
       {author &&
         <div>
-          <h3>{author.name}</h3>
-          <p>{author.about}</p>
+          <section data-name="author-hero">
+            <AuthorHero author={author} />
+          </section>
+          <section data-name="author-description" className="pt-20">
+            <AuthorDescription content={author.about} />
+          </section>
+          <section data-name="author-books" className="pt-20">
+            <AuthorBooksList author={author} />
+          </section>
         </div>
       }
-    </div>
+    </>
   );
 }
 

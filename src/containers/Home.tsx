@@ -51,7 +51,7 @@ function Home() {
   }
 
   return (
-    <div style={{ padding: 20 }}>
+    <div>
       <Hero />
       <SearchField
         inputValue={searchedKeyword}

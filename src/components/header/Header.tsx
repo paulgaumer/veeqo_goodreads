@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header>
+    <header className="mb-6">
       <div className="relative bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6">
+          <div className="flex items-center justify-between py-6 border-b-2 border-gray-100 md:justify-start md:space-x-10">
             <div className="lg:w-0 lg:flex-1">
               <Link to="/" className="flex items-center font-bold">
                 <p>GOODREEDS</p>
               </Link>
             </div>
 
-            <nav className="flex items-center justify-end space-x-8 flex-1">
-              <Link to="/" className="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900">
-                About
-              </Link>
+            <nav className="flex items-center justify-end flex-1 space-x-8">
+              <a href="https://www.paulgaumer.com/" target="_blank" rel="noopener noreferrer" className="text-base font-medium leading-6 text-gray-500 whitespace-no-wrap hover:text-gray-900 focus:outline-none focus:text-gray-900">
+                About this site
+              </a>
             </nav>
           </div>
         </div>
