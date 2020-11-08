@@ -3,7 +3,12 @@ import { IBook } from "../types/book"
 
 // TYPES
 export interface IState {
-  books: IBook[];
+  bookSearch: {
+    search: {
+      totalResults?: number
+    }
+    books: IBook[]
+  };
   author: IAuthor | null
 }
 
@@ -20,14 +25,17 @@ interface ISetAuthor {
 export type Actions = ISetBooks | ISetAuthor;
 
 export const initialState: IState = {
-  books: [],
+  bookSearch: {
+    search: {},
+    books: []
+  },
   author: null,
 };
 
 export const reducer = (state: IState, action: Actions) => {
   switch (action.type) {
     case "SET_BOOKS":
-      return { ...state, books: action.payload };
+      return { ...state, bookSearch: action.payload };
     case "SET_AUTHOR":
       return { ...state, author: action.payload };
   }

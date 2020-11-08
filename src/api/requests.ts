@@ -3,7 +3,7 @@ export const getBooks = async (keyword: string, type: string) => {
     `/.netlify/functions/getBooksByKeyword?keyword=${keyword}&type=${type}`
   );
   const data = await res.json();
-  return data.books;
+  return data.bookSearch;
 };
 
 export const getAuthorInfo = async (authorId: string) => {

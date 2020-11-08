@@ -9,7 +9,7 @@ function Home() {
   const [searchedKeyword, setSearchedKeyword] = useState<string>("")
   const [searchType, setSearchType] = useState<string>("title")
   const { state, dispatch } = useContext(ContextStore)
-  const { books } = state
+  const { bookSearch } = state
 
   const handleRadioChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const type = e.target.value
@@ -62,7 +62,7 @@ function Home() {
       />
 
       <div className="mt-20">
-        <CardsGrid books={books} />
+        <CardsGrid books={bookSearch.books} totalResults={bookSearch.search.totalResults} />
       </div>
     </div>
   );
