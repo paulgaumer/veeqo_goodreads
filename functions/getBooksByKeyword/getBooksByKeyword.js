@@ -24,7 +24,7 @@ const sortBooks = (books) => {
   return list;
 };
 
-const getBooksByKeyword = async (keyword, type = 'title', page = '1') => {
+const getBooksByKeyword = async (keyword, type = 'title', page) => {
   const url = `https://www.goodreads.com/search.xml?key=BzOzyH7EB1GpjXuKD6BNw&q=${keyword}&search_type=books&search[field]=${type}&page=${page}`;
   const res = await fetch(url);
   const text = await res.text();
@@ -33,6 +33,12 @@ const getBooksByKeyword = async (keyword, type = 'title', page = '1') => {
   const results = {
     search: {
       totalResults: jsonObj.GoodreadsResponse.search['total-results'],
+      activePage: Number(page),
+      totalPages: Math.ceil(
+        jsonObj.GoodreadsResponse.search['total-results'] / 20
+      ),
+      keyword: keyword,
+      type: type,
     },
     books: sortBooks(books),
   };
@@ -54,13 +60,13 @@ const getBooksByIsbn = async (keyword) => {
 };
 
 exports.handler = async (event) => {
-  const { keyword, type } = event.queryStringParameters;
+  const { keyword, type, page } = event.queryStringParameters;
 
   try {
     const bookSearch =
       type === 'isbn'
         ? await getBooksByIsbn(keyword)
-        : await getBooksByKeyword(keyword, type);
+        : await getBooksByKeyword(keyword, type, page);
     return {
       statusCode: 200,
       body: JSON.stringify({ bookSearch }),

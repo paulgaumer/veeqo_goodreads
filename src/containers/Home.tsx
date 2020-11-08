@@ -62,7 +62,7 @@ function Home() {
       />
 
       <div className="mt-20">
-        <CardsGrid books={bookSearch.books} totalResults={bookSearch.search.totalResults} />
+        <CardsGrid books={bookSearch.books} search={bookSearch.search} />
       </div>
     </div>
   );

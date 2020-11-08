@@ -5,7 +5,11 @@ import { IBook } from "../types/book"
 export interface IState {
   bookSearch: {
     search: {
-      totalResults?: number
+      totalResults: number,
+      activePage: number,
+      totalPages: number,
+      keyword: string,
+      type: "title" | "author" | "isbn"
     }
     books: IBook[]
   };
@@ -26,7 +30,13 @@ export type Actions = ISetBooks | ISetAuthor;
 
 export const initialState: IState = {
   bookSearch: {
-    search: {},
+    search: {
+      totalResults: 0,
+      activePage: 1,
+      totalPages: 1,
+      keyword: "",
+      type: "title"
+    },
     books: []
   },
   author: null,
