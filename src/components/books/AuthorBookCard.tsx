@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import tw from "twin.macro"
 import changeImageSize from "../../utils/changeImageSize"
 import excerpt from "../../utils/excerpt"
 import Star from '../../assets/icons/Star'
@@ -14,8 +14,9 @@ interface IImageProps {
 }
 
 const Image = styled.div<IImageProps>`
-  height: 270px;
-  width: 170px;
+  ${tw`w-32 h-48 sm:w-40 sm:h-64`}
+  /* height: 270px;
+  width: 170px; */
   background-image: url(${p => p.img});
   background-size: cover;
   background-position: top;
@@ -27,11 +28,11 @@ const AuthorBookCard = ({ book }: any) => {
 
   return (
     <div className="relative px-4 py-6 border border-gray-200 rounded-lg hover:shadow-md">
-      <div className="flex px-10 space-x-10">
-        <Image img={img} alt={title} className="flex-shrink-0 rounded-lg" />
+      <div className="flex flex-col items-center px-10 sm:items-start sm:space-x-10 sm:flex-row">
+        <Image img={img} alt={title} className="rounded-lg sm:flex-shrink-0" />
 
-        <div className="flex flex-col items-start py-6">
-          <h3 className="text-xl">{title}</h3>
+        <div className="flex flex-col items-center pt-6 sm:items-start sm:pt-3">
+          <h3 className="text-xl text-center sm:text-left">{title}</h3>
 
           <div className="flex items-center mt-4 space-x-1">
             <Star width="w-5" height={"h-5"} color="text-orange-500" />
@@ -49,15 +50,15 @@ const AuthorBookCard = ({ book }: any) => {
             <Info width="w-5" height={"h-5"} color="text-gray-500" />
             <span>{book.format}</span>
           </div>
-          <div className="flex mt-1 space-x-2 text-sm font-light text-gray-500">
+          <div className="flex flex-col mt-1 text-sm font-light text-gray-500 sm:flex-row sm:space-x-2">
             <span className="italic">Published in {book.publication_year}</span>
-            <span>|</span>
+            <span className="hidden sm:inline-block">|</span>
             <span className="italic">ISBN: {book.isbn !== "" ? book.isbn : "Unknown"}</span>
           </div>
         </div>
       </div>
 
-      <div className="px-6 mt-6">
+      <div className="px-6 mt-8">
         <div dangerouslySetInnerHTML={{
           __html: book.description
         }} />
@@ -65,9 +66,9 @@ const AuthorBookCard = ({ book }: any) => {
 
       <div className="flex justify-center">
         <span className="inline-flex mt-6 rounded-md shadow-sm">
-          <Link to={`/authors/${book.link}`} className="inline-flex items-center px-2.5 py-2 border border-transparent text-sm leading-4 font-medium rounded text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-gray-900 transition ease-in-out duration-150">
+          <a href={book.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-2.5 py-2 border border-transparent text-sm leading-4 font-medium rounded text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-gray-900 transition ease-in-out duration-150">
             See on Goodreads
-          </Link>
+          </a>
         </span>
       </div>
     </div>

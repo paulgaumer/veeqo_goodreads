@@ -30,14 +30,14 @@ const Grid = styled.div`
 const AuthorBooksList = ({ author }: IProps) => {
   return (
     <div>
-      <h3 className="inline-flex pb-2 pr-8 space-x-2 text-2xl border-b border-gray-200">
+      <h3 className="inline-flex items-center pb-2 pr-8 mb-10 space-x-2 text-2xl border-b border-gray-200">
         <Book color={"text-gray-700"} />
         <span>{author.name}'s books</span>
       </h3>
       <Grid>
         <Masonry
-          breakpointCols={2}
-          className="mt-10 masonry-grid"
+          breakpointCols={{ default: 2, 1100: 1 }}
+          className="masonry-grid"
           columnClassName="masonry-grid_column"
         >
           {author.books.map(book => {
