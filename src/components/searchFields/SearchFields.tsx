@@ -11,7 +11,7 @@ interface IProps {
 
 const SearchFields = ({ inputValue, radioValue, onInputChange, onRadioChange, placeholder }: IProps) => {
   return (
-    <div className="inline-flex flex-col w-1/2 px-8 py-8 space-y-3 bg-white rounded-lg shadow-lg">
+    <div className="inline-flex flex-col w-2/3 px-8 py-8 space-y-3 bg-white rounded-lg shadow-lg">
       <DebounceInput
         debounceTimeout={300}
         value={inputValue}
@@ -21,6 +21,7 @@ const SearchFields = ({ inputValue, radioValue, onInputChange, onRadioChange, pl
       />
 
       <div className="flex space-x-3 text-sm">
+        <p>Search by</p>
         <div className="flex items-center justify-center space-x-1">
           <input id="title" value="title" name="search-type" type="radio" className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer form-radio" checked={radioValue === "title"} onChange={onRadioChange} />
           <label htmlFor="title">title</label>

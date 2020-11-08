@@ -1,4 +1,5 @@
 import React from 'react'
+import goodbooks from "../../assets/images/goodbooks.svg"
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -9,7 +10,7 @@ const Header = () => {
           <div className="flex items-center justify-between py-6 border-b-2 border-gray-100 md:justify-start md:space-x-10">
             <div className="lg:w-0 lg:flex-1">
               <Link to="/" className="flex items-center font-bold">
-                <p>GOODREEDS</p>
+                <img src={goodbooks} alt="Goodbooks" className="w-40" />
               </Link>
             </div>
 

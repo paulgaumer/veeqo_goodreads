@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import tw from "twin.macro"
 import changeImageSize from "../../utils/changeImageSize"
@@ -8,6 +8,7 @@ import BookOpen from '../../assets/icons/BookOpen'
 import Info from '../../assets/icons/Info'
 import Chat from '../../assets/icons/Chat'
 import { formatNumber } from "../../utils/formatNumber"
+import { htmlDecode } from "../../utils/htmlDecode"
 
 interface IImageProps {
   img: string
@@ -24,6 +25,14 @@ const Image = styled.div<IImageProps>`
 const AuthorBookCard = ({ book }: any) => {
   const title = excerpt(book.title)
   const img = changeImageSize(book.image_url)
+  const [description, setDescription] = useState("")
+
+  useEffect(() => {
+    if (window !== undefined) {
+      const desc: any = htmlDecode(book.description)
+      setDescription(desc)
+    }
+  }, [book.description])
 
   return (
     <div className="relative px-4 py-6 border border-gray-200 rounded-lg hover:shadow-md">
@@ -57,9 +66,9 @@ const AuthorBookCard = ({ book }: any) => {
         </div>
       </div>
 
-      <div className="px-6 mt-8">
+      <div className="px-6 mt-8 leading-relaxed">
         <div dangerouslySetInnerHTML={{
-          __html: book.description
+          __html: description
         }} />
       </div>
 
