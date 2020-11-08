@@ -47,7 +47,7 @@ const Card = ({ book }: IProps) => {
       </div>
       <div className="flex flex-col items-start justify-between py-6 pr-2">
         <div className="flex flex-col space-y-2">
-          <h3 className="">{title}</h3>
+          <h3 className="text-xl">{title}</h3>
           <Link to={`/authors/${book.author.id}`} className="font-light text-gray-600 hover:underline"><p>- {book.author.name}</p></Link>
           <p className="text-xs italic font-light text-gray-500">Published: {date}</p>
         </div>

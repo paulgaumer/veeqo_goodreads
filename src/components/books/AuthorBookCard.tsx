@@ -7,6 +7,7 @@ import Star from '../../assets/icons/Star'
 import BookOpen from '../../assets/icons/BookOpen'
 import Info from '../../assets/icons/Info'
 import Chat from '../../assets/icons/Chat'
+import { formatNumber } from "../../utils/formatNumber"
 
 interface IImageProps {
   img: string
@@ -15,8 +16,6 @@ interface IImageProps {
 
 const Image = styled.div<IImageProps>`
   ${tw`w-32 h-48 sm:w-40 sm:h-64`}
-  /* height: 270px;
-  width: 170px; */
   background-image: url(${p => p.img});
   background-size: cover;
   background-position: top;
@@ -32,19 +31,19 @@ const AuthorBookCard = ({ book }: any) => {
         <Image img={img} alt={title} className="rounded-lg sm:flex-shrink-0" />
 
         <div className="flex flex-col items-center pt-6 sm:items-start sm:pt-3">
-          <h3 className="text-xl text-center sm:text-left">{title}</h3>
+          <h3 className="text-xl font-medium text-center sm:text-left">{title}</h3>
 
           <div className="flex items-center mt-4 space-x-1">
             <Star width="w-5" height={"h-5"} color="text-orange-500" />
-            <span>{book.average_rating} <span className="text-sm text-gray-600">({book.ratings_count} ratings)</span></span>
+            <span className="font-medium">{book.average_rating} <span className="text-sm font-normal text-gray-600">({formatNumber(book.ratings_count)} ratings)</span></span>
           </div>
           <div className="flex items-center mt-2 space-x-1 text-gray-600">
             <Chat width="w-5" height={"h-5"} color="text-gray-600" />
-            <span>{book.text_reviews_count} reviews</span>
+            <span>{formatNumber(book.text_reviews_count)} reviews</span>
           </div>
           <div className="flex items-center mt-4 space-x-1 text-gray-600">
             <BookOpen width="w-4" height={"h-4"} color="text-gray-600" />
-            <span>{book.num_pages} pages</span>
+            <span>{formatNumber(book.num_pages)} pages</span>
           </div>
           <div className="flex items-center mt-4 space-x-1 text-sm text-gray-600">
             <Info width="w-5" height={"h-5"} color="text-gray-500" />

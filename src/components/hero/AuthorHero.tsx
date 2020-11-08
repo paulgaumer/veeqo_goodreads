@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatNumber } from "../../utils/formatNumber"
 import { IAuthor } from "../../types/author"
 import Heart from "../../assets/icons/Heart"
 import People from "../../assets/icons/People"
@@ -19,11 +20,11 @@ const AuthorHero = ({ author }: IProps) => {
           <div className="flex space-x-10">
             <p className="flex items-center space-x-2">
               <Heart width={"w-5"} height={"h-5"} color={"text-white"} />
-              <span>{author.fans_count} fans</span>
+              <span>{formatNumber(author.fans_count)} fans</span>
             </p>
             <p className="flex items-center space-x-2">
               <People width={"w-5"} height={"h-5"} color={"text-white"} />
-              <span>{author.author_followers_count} followers</span>
+              <span>{formatNumber(author.author_followers_count)} followers</span>
             </p>
           </div>
         </div>
