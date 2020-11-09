@@ -56,8 +56,6 @@ const SearchContainer = () => {
      */
     if (keyword !== "") {
       const data = await getBooks(keyword, searchType)
-      console.log(data)
-      // if (data.api.status === 200) {
       dispatch({
         type: "SET_BOOKS",
         payload: await getBooks(keyword, searchType)

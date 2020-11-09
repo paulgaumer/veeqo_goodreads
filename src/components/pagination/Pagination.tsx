@@ -17,7 +17,6 @@ const Pager = ({ search }: IProps) => {
   const { dispatch } = useContext(ContextStore)
 
   const handleChange = async (pageNumber: number) => {
-    console.log(pageNumber)
     dispatch({
       type: "SET_BOOKS",
       payload: await getBooks(search.keyword, search.type, pageNumber)

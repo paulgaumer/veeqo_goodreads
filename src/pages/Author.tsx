@@ -27,7 +27,7 @@ function Author() {
 
 
   return (
-    <>
+    <div data-test="author-page">
       {!author &&
         <div className="mt-20">
           <Loading />
@@ -59,7 +59,7 @@ function Author() {
           </section>
         </div>
       }
-    </>
+    </div>
   );
 }
 

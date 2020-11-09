@@ -43,7 +43,8 @@
     "build:tailwind": "tailwind build src/styles/styles.css -o src/styles/output/tailwind.output.css",
     "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
     "prebuild": "run-s build:tailwind",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +65,7 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.4"
+    "@types/styled-components": "^5.1.4",
+    "cypress": "^5.5.0"
   }
 }

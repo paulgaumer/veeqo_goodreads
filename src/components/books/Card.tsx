@@ -41,6 +41,7 @@ const Card = ({ book, handleAuthorClick }: IProps) => {
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
+      data-test="book-card"
       className="relative flex space-x-6 border border-gray-200 rounded-lg hover:shadow-xl">
       <Image img={img} alt={title} className="flex-shrink-0 rounded-lg" />
       <div className={`absolute top-0 z-20 w-20 px-2 py-1 text-white rounded-tl-lg rounded-br-lg -left-6 ${getRatingColor()}`}>
@@ -54,6 +55,7 @@ const Card = ({ book, handleAuthorClick }: IProps) => {
           <h3 className="text-xl">{title}</h3>
           <Link
             to={`/authors/${book.author.id}`}
+            data-test="author-link"
             onClick={handleAuthorClick}
             className="font-light text-gray-600 hover:underline">
             <p>- {book.author.name}</p>

@@ -17,21 +17,22 @@ const SearchFields = ({ inputValue, radioValue, onInputChange, onRadioChange, pl
         value={inputValue}
         placeholder={placeholder}
         onChange={onInputChange}
+        data-test="search-bar"
         className="block w-full form-input sm:text-sm sm:leading-5 searchBar"
       />
 
       <div className="flex space-x-3 text-sm">
         <p>Search by</p>
         <div className="flex items-center justify-center space-x-1">
-          <input id="title" value="title" name="search-type" type="radio" className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer form-radio" checked={radioValue === "title"} onChange={onRadioChange} />
+          <input id="title" value="title" name="search-type" data-test="radio-title" type="radio" className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer form-radio" checked={radioValue === "title"} onChange={onRadioChange} />
           <label htmlFor="title">title</label>
         </div>
         <div className="flex items-center justify-center space-x-1">
-          <input id="author" value="author" name="search-type" type="radio" className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer form-radio" checked={radioValue === "author"} onChange={onRadioChange} />
+          <input id="author" value="author" name="search-type" data-test="radio-author" type="radio" className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer form-radio" checked={radioValue === "author"} onChange={onRadioChange} />
           <label htmlFor="author">author</label>
         </div>
         <div className="flex items-center justify-center space-x-1">
-          <input id="isbn" value="isbn" name="search-type" type="radio" className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer form-radio" checked={radioValue === "isbn"} onChange={onRadioChange} />
+          <input id="isbn" value="isbn" name="search-type" data-test="radio-isbn" type="radio" className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer form-radio" checked={radioValue === "isbn"} onChange={onRadioChange} />
           <label htmlFor="isbn">isbn</label>
         </div>
       </div>

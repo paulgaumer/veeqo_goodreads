@@ -71,7 +71,7 @@ const CardsGrid = () => {
         </>
       }
       {api.status === 500 &&
-        <div className="flex items-center justify-center">
+        <div data-test="search-error" className="flex items-center justify-center">
           <p className="flex items-center space-x-1">
             <Info width="w-5" height="w-5" color="text-gray-700" />
             <span>We could not find any match for "<span className="italic">{search.keyword}</span>"</span>
