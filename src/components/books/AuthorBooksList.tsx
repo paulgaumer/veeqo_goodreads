@@ -34,17 +34,24 @@ const AuthorBooksList = ({ author }: IProps) => {
         <Book color={"text-gray-700"} />
         <span>{author.name}'s books</span>
       </h3>
-      <Grid>
-        <Masonry
-          breakpointCols={{ default: 2, 1100: 1 }}
-          className="masonry-grid"
-          columnClassName="masonry-grid_column"
-        >
-          {author.books.map(book => {
-            return <div key={book.id}><AuthorBookCard book={book} /></div>
-          })}
-        </Masonry>
-      </Grid>
+      {/* If the author has several books */}
+      {author.books && Array.isArray(author.books) &&
+        <Grid>
+          <Masonry
+            breakpointCols={{ default: 2, 1100: 1 }}
+            className="masonry-grid"
+            columnClassName="masonry-grid_column"
+          >
+            {author.books.map(book => {
+              return <div key={book.id}><AuthorBookCard book={book} /></div>
+            })}
+          </Masonry>
+        </Grid>
+      }
+      {/* If the author has only one book */}
+      {author.books && !Array.isArray(author.books) &&
+        <AuthorBookCard book={author.books} />
+      }
     </div>
   )
 }

@@ -11,7 +11,7 @@ const StyledContainer = styled.div`
 `
 
 const AuthorDescription = ({ content }: { content: string }) => {
-  if (content === "") {
+  if (!content || content === "") {
     return null
   } else {
     return (

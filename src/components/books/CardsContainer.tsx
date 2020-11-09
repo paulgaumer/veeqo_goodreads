@@ -1,25 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from "./Card"
+import { ContextStore } from "../../context/store"
 import Pagination from "../pagination/Pagination"
 import { formatNumber } from "../../utils/formatNumber"
 import { IBook } from "../../types/book"
 import Info from '../../assets/icons/Info'
 
-interface IProps {
-  books: IBook[]
-  search: {
-    totalResults: number,
-    activePage: number,
-    keyword: string,
-    type: "title" | "author" | "isbn",
-    totalPages: number
-  },
-  api: {
-    status: number
-  }
-}
+const CardsGrid = () => {
+  const { state, dispatch } = useContext(ContextStore)
+  const { bookSearch, api } = state
+  const { search, books } = bookSearch
 
-const CardsGrid = ({ books, search, api }: IProps) => {
+  const handleAuthorClick = () => {
+    /**
+     * Reset the author into context
+     */
+    dispatch({
+      type: "SET_AUTHOR",
+      payload: null
+    })
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between pb-4 mb-20 border-b border-gray-200">
@@ -36,7 +37,7 @@ const CardsGrid = ({ books, search, api }: IProps) => {
           <ul className="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
             {books.map((book: IBook) => {
               return <li key={book.id}>
-                <Card book={book} />
+                <Card book={book} handleAuthorClick={handleAuthorClick} />
               </li>
             })}
           </ul>

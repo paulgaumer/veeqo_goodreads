@@ -8,7 +8,8 @@ import excerpt from "../../utils/excerpt"
 import Star from '../../assets/icons/Star'
 
 interface IProps {
-  book: IBook
+  book: IBook,
+  handleAuthorClick: () => void
 }
 
 interface IImageProps {
@@ -24,7 +25,7 @@ const Image = styled.div<IImageProps>`
   background-position: top;
 `
 
-const Card = ({ book }: IProps) => {
+const Card = ({ book, handleAuthorClick }: IProps) => {
   const title = excerpt(book.title)
   const img = changeImageSize(book.image)
   const date = format(new Date(book.publicationDate.month, book.publicationDate.day, book.publicationDate.year), 'PP')
@@ -48,7 +49,12 @@ const Card = ({ book }: IProps) => {
       <div className="flex flex-col items-start justify-between py-6 pr-2">
         <div className="flex flex-col space-y-2">
           <h3 className="text-xl">{title}</h3>
-          <Link to={`/authors/${book.author.id}`} className="font-light text-gray-600 hover:underline"><p>- {book.author.name}</p></Link>
+          <Link
+            to={`/authors/${book.author.id}`}
+            onClick={handleAuthorClick}
+            className="font-light text-gray-600 hover:underline">
+            <p>- {book.author.name}</p>
+          </Link>
           <p className="text-xs italic font-light text-gray-500">Published: {date}</p>
         </div>
         <span className="inline-flex rounded-md shadow-sm">

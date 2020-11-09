@@ -1,17 +1,13 @@
-import React, { useContext } from 'react';
-import { ContextStore } from "../context/store"
+import React from 'react';
 import Hero from "../components/hero/Hero"
-import CardsGrid from '../components/books/CardsGrid';
+import CardsGrid from '../components/books/CardsContainer';
 
 function Home() {
-  const { state } = useContext(ContextStore)
-  const { bookSearch, api } = state
-
   return (
     <div>
       <Hero />
       <div className="mt-36">
-        <CardsGrid books={bookSearch.books} search={bookSearch.search} api={api} />
+        <CardsGrid />
       </div>
     </div>
   );
