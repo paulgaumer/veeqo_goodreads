@@ -15,8 +15,9 @@ export interface IState {
   };
   author: IAuthor | null
   api: {
-    status: number
+    status: number,
   }
+  firstInit: boolean
 }
 
 interface ISetBooks {
@@ -28,8 +29,12 @@ interface ISetAuthor {
   type: "SET_AUTHOR";
   payload: any;
 }
+interface ISetFirstInit {
+  type: "SET_FIRST_INIT";
+  payload: boolean;
+}
 
-export type Actions = ISetBooks | ISetAuthor;
+export type Actions = ISetBooks | ISetAuthor | ISetFirstInit;
 
 export const initialState: IState = {
   bookSearch: {
@@ -45,7 +50,8 @@ export const initialState: IState = {
   author: null,
   api: {
     status: 200
-  }
+  },
+  firstInit: true
 };
 
 export const reducer = (state: IState, action: Actions) => {
@@ -54,5 +60,7 @@ export const reducer = (state: IState, action: Actions) => {
       return { ...state, bookSearch: action.payload.bookSearch, api: action.payload.api };
     case "SET_AUTHOR":
       return { ...state, author: action.payload };
+    case "SET_FIRST_INIT":
+      return { ...state, firstInit: action.payload };
   }
 };

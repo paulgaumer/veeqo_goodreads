@@ -16,7 +16,7 @@ const Header = () => {
 
             <nav className="flex items-center justify-end flex-1 space-x-8">
               <a href="https://www.paulgaumer.com/" target="_blank" rel="noopener noreferrer" className="text-base font-medium leading-6 text-gray-500 whitespace-no-wrap hover:text-gray-900 focus:outline-none focus:text-gray-900">
-                About this site
+                Get in touch
               </a>
             </nav>
           </div>

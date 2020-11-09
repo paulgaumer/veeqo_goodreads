@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { ContextStore } from "../../context/store"
 import { getBooks } from "../../api/requests"
 import SearchField from "../../components/searchFields/SearchFields"
@@ -6,7 +6,30 @@ import SearchField from "../../components/searchFields/SearchFields"
 const SearchContainer = () => {
   const [searchedKeyword, setSearchedKeyword] = useState<string>("")
   const [searchType, setSearchType] = useState<string>("title")
-  const { dispatch } = useContext(ContextStore)
+  const { state, dispatch } = useContext(ContextStore)
+  const { firstInit } = state
+
+  useEffect(() => {
+    if (firstInit) {
+      const getSeeds = async () => {
+        const data = await getBooks("Harry Potter", "title")
+        if (data.api.status === 200) {
+          dispatch({
+            type: "SET_FIRST_INIT",
+            payload: false
+          })
+        }
+        return data
+      }
+      const setSeeds = async () => {
+        dispatch({
+          type: "SET_BOOKS",
+          payload: await getSeeds()
+        })
+      }
+      setSeeds()
+    }
+  }, [firstInit, dispatch])
 
   const handleRadioChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const type = e.target.value
@@ -57,7 +80,7 @@ const SearchContainer = () => {
       radioValue={searchType}
       onInputChange={handleInputChange}
       onRadioChange={handleRadioChange}
-      placeholder="Enter your keywords"
+      placeholder="Ex: Harry Potter"
     />
   )
 }
