@@ -14,6 +14,9 @@ export interface IState {
     books: IBook[]
   };
   author: IAuthor | null
+  api: {
+    status: number
+  }
 }
 
 interface ISetBooks {
@@ -40,12 +43,15 @@ export const initialState: IState = {
     books: []
   },
   author: null,
+  api: {
+    status: 200
+  }
 };
 
 export const reducer = (state: IState, action: Actions) => {
   switch (action.type) {
     case "SET_BOOKS":
-      return { ...state, bookSearch: action.payload };
+      return { ...state, bookSearch: action.payload.bookSearch, api: action.payload.api };
     case "SET_AUTHOR":
       return { ...state, author: action.payload };
   }

@@ -66,6 +66,17 @@ const getBooksByIsbn = async (keyword, type) => {
 exports.handler = async (event) => {
   const { keyword, type, page } = event.queryStringParameters;
 
+  const EmptyResults = {
+    search: {
+      totalResults: 0,
+      activePage: 1,
+      totalPages: 1,
+      keyword: keyword,
+      type: type,
+    },
+    books: [],
+  };
+
   try {
     const bookSearch =
       type === 'isbn'
@@ -73,9 +84,12 @@ exports.handler = async (event) => {
         : await getBooksByKeyword(keyword, type, page);
     return {
       statusCode: 200,
-      body: JSON.stringify({ bookSearch }),
+      body: JSON.stringify({ bookSearch, api: { status: 200 } }),
     };
   } catch (error) {
-    return { statusCode: 500, body: error.toString() };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ bookSearch: EmptyResults, api: { status: 500 } }),
+    };
   }
 };
