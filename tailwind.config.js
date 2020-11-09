@@ -11,8 +11,15 @@ module.exports = {
     'public/**/*.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      inset: {
+        '-6': '-1.5rem',
+        '-4': '-1rem',
+      },
+    },
   },
-  variants: {},
-  plugins: [],
+  variants: {
+    boxShadow: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+  },
+  plugins: [require('@tailwindcss/ui')],
 };

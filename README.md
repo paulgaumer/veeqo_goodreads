@@ -1,46 +1,107 @@
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/paulgaumer/v3_portfolio">
+    <img src="public/goodbooks.jpg" alt="Logo" width="500">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">Goodbooks (Veeqo POC)</h3>
 
-## Available Scripts
+  <p align="center">
+    <br />
+    <br />
+    <a href="https://veeqo-goodreads-pg.netlify.app/">View Website</a>
+    ·
+    <a href="https://www.paulgaumer.com/#contact-form">Report Bug</a>
+    ·
+  </p>
+</p>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
 
-### `yarn start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+- [Contact](#contact)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- ABOUT THE PROJECT -->
 
-### `yarn test`
+## About The Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Proof of concept for Veeqo, based on the [GoodReads API](https://www.goodreads.com/api/index).
 
-### `yarn build`
+### Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Create React App](https://github.com/facebook/create-react-app)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/)
+- [Netlify](https://netlify.com)
+- [Styled Components](https://styled-components.com/)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Cypress](https://www.cypress.io/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- GETTING STARTED -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `yarn eject`
+To run the website:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 1. Clone the repo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+git clone git@github.com:paulgaumer/veeqo_goodreads.git
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### 2. Install NPM packages
 
-## Learn More
+```sh
+yarn install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 3. Start your local server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To avoid CORS issues when requesting the GoodReads API, calls are made via serverless functions. In order to run these with the server and receive data, you'll need the Netlify cli and host an instance of the site on Netlify.
+
+```sh
+npm install netlify-cli -g
+
+netlify login
+
+netlify init
+
+yarn dev
+
+-> visit http://localhost:8888/
+```
+
+If you want to run the app without the serverless functions and receive **NO DATA**
+
+```sh
+yarn start
+
+-> visit http://localhost:3000/
+```
+
+#### 4. Test
+
+Run Cypress tests
+
+```sh
+-> With the server running on http://localhost:8888/
+
+yarn test
+```
+
+<!-- CONTACT -->
+
+## Contact
+
+[Paul Gaumer](https://paulgaumer.com) - [@PaulGaumer](https://twitter.com/@PaulGaumer) - hello@paulgaumer.com
+
+Project Link: [https://github.com/paulgaumer/veeqo_goodreads](https://github.com/paulgaumer/veeqo_goodreads)
