@@ -25,6 +25,8 @@ const Pager = ({ search }: IProps) => {
       type: "SET_BOOKS",
       payload: await getBooks(search.keyword, search.type, pageNumber)
     })
+    const el: any = document.querySelector("#pagination-top")
+    el.scrollIntoView()
   }
 
   return (

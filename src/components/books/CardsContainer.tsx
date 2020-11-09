@@ -25,7 +25,7 @@ const CardsGrid = () => {
   return (
     <div>
       { !firstInit &&
-        <div className="flex flex-col items-start justify-between pb-4 mb-12 border-b border-gray-200 md:mb-20 sm:items-center sm:flex-row">
+        <div id="pagination-top" className="flex flex-col items-start justify-between pb-4 mb-12 border-b border-gray-200 md:mb-20 sm:items-center sm:flex-row">
           <div className="flex items-center pb-3 sm:pb-0">
             <p className="pr-3 font-bold text-gray-900">{formatNumber(search.totalResults)} {search.totalResults > 1 ? "Results" : "Result"}</p>
             <p className="px-3 text-sm text-gray-600 border-l-2 border-gray-200">Page {search.activePage} / {search.totalPages}</p>
