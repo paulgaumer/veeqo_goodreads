@@ -31,7 +31,7 @@ const CardsGrid = () => {
             <p className="px-3 text-sm text-gray-600 border-l-2 border-gray-200">Page {search.activePage} / {search.totalPages}</p>
           </div>
           {search.type !== "isbn" &&
-            <Pagination search={search} />
+            <Pagination search={search} position="top" />
           }
         </div>
 
@@ -66,7 +66,7 @@ const CardsGrid = () => {
             })}
           </ul>
           <div className="flex justify-center mt-20">
-            <Pagination search={search} />
+            <Pagination search={search} position="bottom" />
           </div>
         </>
       }

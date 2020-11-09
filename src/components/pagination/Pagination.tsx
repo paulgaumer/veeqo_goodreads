@@ -11,9 +11,10 @@ interface IProps {
     keyword: string,
     type: "title" | "author" | "isbn"
   }
+  position: "top" | "bottom"
 }
 
-const Pager = ({ search }: IProps) => {
+const Pager = ({ search, position }: IProps) => {
   const { dispatch } = useContext(ContextStore)
 
   /**
@@ -25,8 +26,10 @@ const Pager = ({ search }: IProps) => {
       type: "SET_BOOKS",
       payload: await getBooks(search.keyword, search.type, pageNumber)
     })
-    const el: any = document.querySelector("#pagination-top")
-    el.scrollIntoView()
+    if (position === "bottom") {
+      const el: any = document.querySelector("#pagination-top")
+      el.scrollIntoView()
+    }
   }
 
   return (
