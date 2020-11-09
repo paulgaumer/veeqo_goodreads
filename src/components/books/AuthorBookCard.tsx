@@ -74,7 +74,7 @@ const AuthorBookCard = ({ book }: any) => {
 
       <div className="flex justify-center">
         <span className="inline-flex mt-6 rounded-md shadow-sm">
-          <a href={book.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-2.5 py-2 border border-transparent text-sm leading-4 font-medium rounded text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-gray-900 transition ease-in-out duration-150">
+          <a href={book.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-2.5 py-2 border border-transparent text-sm leading-4 font-medium rounded text-white bg-teal-800 hover:bg-teal-600 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-teal-800 transition ease-in-out duration-150">
             See on Goodreads
           </a>
         </span>

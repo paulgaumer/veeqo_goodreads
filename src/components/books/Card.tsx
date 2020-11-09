@@ -58,7 +58,7 @@ const Card = ({ book, handleAuthorClick }: IProps) => {
           <p className="text-xs italic font-light text-gray-500">Published: {date}</p>
         </div>
         <span className="inline-flex rounded-md shadow-sm">
-          <Link to={`/authors/${book.author.id}`} className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-gray-900 transition ease-in-out duration-150">
+          <Link to={`/authors/${book.author.id}`} className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded text-white bg-teal-800 hover:bg-teal-600 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-teal-800 transition ease-in-out duration-150">
             More info
         </Link>
         </span>

@@ -12,6 +12,16 @@ const SearchWrapper = styled.div`
 `
 
 const Hero = () => {
+
+  const focusSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const searchBar: HTMLElement | null = document.querySelector(".searchBar")
+    if (searchBar) {
+      window.scrollTo(0, searchBar.offsetTop)
+      searchBar.focus()
+    }
+  }
+
   return (
     <div className="relative">
       <div className="max-w-screen-xl mx-auto">
@@ -26,13 +36,13 @@ const Hero = () => {
                 Make the world your personal library
               </h2>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Goodbooks brings the best authors and the most exciting literature right into your pocket. Discovering recent novels or review your classics.
+                Goodbooks brings the best authors and the most exciting literature right into your pocket. Discover recent novels or review your classics.
           </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
-                  <a href="/" className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-teal-600 border border-transparent rounded-md hover:bg-teal-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10">
+                  <button onClick={focusSearch} className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-teal-600 border border-transparent rounded-md hover:bg-teal-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10">
                     Find a book
-              </a>
+                  </button>
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <a href="https://www.paulgaumer.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-teal-700 transition duration-150 ease-in-out bg-teal-100 border border-transparent rounded-md hover:text-teal-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 md:py-4 md:text-lg md:px-10">

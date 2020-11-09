@@ -5,6 +5,8 @@ import { getAuthorInfo } from "../api/requests"
 import AuthorHero from "../components/hero/AuthorHero"
 import AuthorDescription from "../components/descriptions/AuthorDescription"
 import AuthorBooksList from "../components/books/AuthorBooksList"
+import Loading from "../components/loading/Loading";
+
 
 function Author() {
 
@@ -26,7 +28,9 @@ function Author() {
   return (
     <>
       {!author &&
-        <p>Loading...</p>
+        <div className="mt-20">
+          <Loading />
+        </div>
       }
       {author &&
         <div>

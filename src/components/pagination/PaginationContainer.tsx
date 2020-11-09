@@ -10,10 +10,10 @@ const PaginationContainer = styled.div`
     ${tw`text-white focus:text-white`}
   }
   .active {
-    ${tw`text-white bg-gray-700`}
+    ${tw`text-white bg-teal-800`}
   }
   .disabled {
-    ${tw`invisible`}
+    ${tw`hidden`}
   }
   li {
     ${tw`flex items-center justify-center px-3 py-1 text-sm text-gray-600 border border-gray-300 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-400`}

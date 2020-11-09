@@ -11,13 +11,13 @@ interface IProps {
 
 const SearchFields = ({ inputValue, radioValue, onInputChange, onRadioChange, placeholder }: IProps) => {
   return (
-    <div className="inline-flex flex-col w-2/3 px-8 py-8 space-y-3 bg-white rounded-lg shadow-lg">
+    <div className="inline-flex flex-col w-11/12 px-8 py-8 space-y-3 bg-white rounded-lg shadow-lg sm:w-10/12 md:w-8/12">
       <DebounceInput
         debounceTimeout={300}
         value={inputValue}
         placeholder={placeholder}
         onChange={onInputChange}
-        className="block w-full form-input sm:text-sm sm:leading-5"
+        className="block w-full form-input sm:text-sm sm:leading-5 searchBar"
       />
 
       <div className="flex space-x-3 text-sm">

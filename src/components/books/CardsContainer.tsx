@@ -8,7 +8,7 @@ import Info from '../../assets/icons/Info'
 
 const CardsGrid = () => {
   const { state, dispatch } = useContext(ContextStore)
-  const { bookSearch, api } = state
+  const { bookSearch, api, firstInit } = state
   const { search, books } = bookSearch
 
   const handleAuthorClick = () => {
@@ -23,15 +23,18 @@ const CardsGrid = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-between pb-4 mb-20 border-b border-gray-200">
-        <div className="flex items-center">
-          <p className="pr-3 font-bold text-gray-900">{formatNumber(search.totalResults)} {search.totalResults > 1 ? "Results" : "Result"}</p>
-          <p className="px-3 text-sm text-gray-600 border-l-2 border-gray-200">Page {search.activePage} / {search.totalPages}</p>
+      { !firstInit &&
+        <div className="flex flex-col items-start justify-between pb-4 mb-12 border-b border-gray-200 md:mb-20 sm:items-center sm:flex-row">
+          <div className="flex items-center pb-3 sm:pb-0">
+            <p className="pr-3 font-bold text-gray-900">{formatNumber(search.totalResults)} {search.totalResults > 1 ? "Results" : "Result"}</p>
+            <p className="px-3 text-sm text-gray-600 border-l-2 border-gray-200">Page {search.activePage} / {search.totalPages}</p>
+          </div>
+          {search.type !== "isbn" &&
+            <Pagination search={search} />
+          }
         </div>
-        {search.type !== "isbn" &&
-          <Pagination search={search} />
-        }
-      </div>
+
+      }
       { api.status === 200 &&
         <>
           <ul className="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
