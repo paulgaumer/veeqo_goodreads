@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import Card from "./Card"
+import { motion } from "framer-motion"
 import { ContextStore } from "../../context/store"
 import Pagination from "../pagination/Pagination"
 import { formatNumber } from "../../utils/formatNumber"
@@ -38,10 +39,30 @@ const CardsGrid = () => {
       { api.status === 200 &&
         <>
           <ul className="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-            {books.map((book: IBook) => {
-              return <li key={book.id}>
-                <Card book={book} handleAuthorClick={handleAuthorClick} />
-              </li>
+            {books.map((book: IBook, i) => {
+              return (
+                <motion.li
+                  key={book.id}
+                  variants={{
+                    hidden: i => ({
+                      opacity: 0,
+                      y: -50 * i,
+                    }),
+                    visible: i => ({
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        delay: i * 0.03,
+                      },
+                    }),
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  custom={i}
+                >
+                  <Card book={book} handleAuthorClick={handleAuthorClick} />
+                </motion.li>
+              )
             })}
           </ul>
           <div className="flex justify-center mt-20">

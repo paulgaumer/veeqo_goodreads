@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
+import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { format } from 'date-fns'
 import { IBook } from "../../types/book"
@@ -38,7 +39,9 @@ const Card = ({ book, handleAuthorClick }: IProps) => {
   }
 
   return (
-    <div className="relative flex space-x-6 border border-gray-200 rounded-lg hover:shadow-md">
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      className="relative flex space-x-6 border border-gray-200 rounded-lg hover:shadow-xl">
       <Image img={img} alt={title} className="flex-shrink-0 rounded-lg" />
       <div className={`absolute top-0 z-20 w-20 px-2 py-1 text-white rounded-tl-lg rounded-br-lg -left-6 ${getRatingColor()}`}>
         <p className="flex items-center space-x-1 text-sm">
@@ -63,7 +66,7 @@ const Card = ({ book, handleAuthorClick }: IProps) => {
         </Link>
         </span>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

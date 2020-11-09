@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
+import { motion } from "framer-motion"
 import SearchContainer from "../searchFields/SearchContainer"
 
 const SearchWrapper = styled.div`
@@ -32,13 +33,34 @@ const Hero = () => {
           <div className="relative px-4 pt-6 sm:px-6 lg:px-8"></div>
           <main className="max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-left">
-              <h2 className="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+              <motion.h2
+                initial={{ opacity: 0, x: -50 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 0.2 },
+                }}
+                className="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
                 Make the world your personal library
-              </h2>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, x: -50 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 0.3 },
+                }}
+                className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 Goodbooks brings the best authors and the most exciting literature right into your pocket. Discover recent novels or review your classics.
-          </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+            </motion.p>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 0.3 },
+                }}
+                className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <button onClick={focusSearch} className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-teal-600 border border-transparent rounded-md hover:bg-teal-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10">
                     Find a book
@@ -49,7 +71,7 @@ const Hero = () => {
                     About this site
               </a>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </main>
         </div>
