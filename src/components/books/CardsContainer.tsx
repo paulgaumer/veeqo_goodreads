@@ -14,7 +14,7 @@ const CardsGrid = () => {
 
   const handleAuthorClick = () => {
     /**
-     * Reset the author into context
+     * Reset the author data stored into context when clicking an author link
      */
     dispatch({
       type: "SET_AUTHOR",

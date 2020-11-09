@@ -14,6 +14,9 @@ const SearchWrapper = styled.div`
 
 const Hero = () => {
 
+  /**
+   * Bring focus to the search input
+   */
   const focusSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const searchBar: HTMLElement | null = document.querySelector(".searchBar")

@@ -16,6 +16,10 @@ interface IProps {
 const Pager = ({ search }: IProps) => {
   const { dispatch } = useContext(ContextStore)
 
+  /**
+   * Fetch updated books list based on page number
+   * @param pageNumber -number
+   */
   const handleChange = async (pageNumber: number) => {
     dispatch({
       type: "SET_BOOKS",

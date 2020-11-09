@@ -2,6 +2,10 @@ require('isomorphic-fetch');
 const parser = require('fast-xml-parser');
 const options = require('../shared/parserOptions.js');
 
+/**
+ * Create a structured object from books response
+ * @param books - array
+ */
 const sortBooks = (books) => {
   const list = books.map((book) => {
     return {
@@ -24,6 +28,12 @@ const sortBooks = (books) => {
   return list;
 };
 
+/**
+ * Fetch books from the GoodReads API if type is Title or Author
+ * @param keyword - string
+ * @param type - string
+ * @param page - number
+ */
 const getBooksByKeyword = async (keyword, type = 'title', page) => {
   const url = `https://www.goodreads.com/search.xml?key=BzOzyH7EB1GpjXuKD6BNw&q=${keyword}&search_type=books&search[field]=${type}&page=${page}`;
   const res = await fetch(url);
@@ -45,6 +55,11 @@ const getBooksByKeyword = async (keyword, type = 'title', page) => {
   return results;
 };
 
+/**
+ * Fetch books from the GoodReads API if type is Isbn
+ * @param keyword - string
+ * @param type - string
+ */
 const getBooksByIsbn = async (keyword, type) => {
   const url = `https://www.goodreads.com/search.xml?key=BzOzyH7EB1GpjXuKD6BNw&q=${keyword}`;
   const res = await fetch(url);
@@ -63,6 +78,9 @@ const getBooksByIsbn = async (keyword, type) => {
   };
 };
 
+/**
+ * Send books data back to the application
+ */
 exports.handler = async (event) => {
   const { keyword, type, page } = event.queryStringParameters;
 

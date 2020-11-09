@@ -15,6 +15,9 @@ function Author() {
   const { state, dispatch } = useContext(ContextStore)
   const { author } = state
 
+  /**
+   * Fetch and set the author data on page load
+   */
   useEffect(() => {
     const setAuthor = async () => {
       dispatch({

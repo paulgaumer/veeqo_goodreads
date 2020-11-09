@@ -9,6 +9,9 @@ const SearchContainer = () => {
   const { state, dispatch } = useContext(ContextStore)
   const { firstInit } = state
 
+  /**
+   * Seed books on website first load
+   */
   useEffect(() => {
     if (firstInit) {
       const getSeeds = async () => {
@@ -55,7 +58,6 @@ const SearchContainer = () => {
      * Set the requested list of books into context
      */
     if (keyword !== "") {
-      const data = await getBooks(keyword, searchType)
       dispatch({
         type: "SET_BOOKS",
         payload: await getBooks(keyword, searchType)

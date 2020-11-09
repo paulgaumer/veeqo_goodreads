@@ -1,3 +1,9 @@
+/**
+ * Fetch books via serverless function
+ * @param keyword - string
+ * @param type - string
+ * @param page - number
+ */
 export const getBooks = async (
   keyword: string,
   type: string,
@@ -10,6 +16,10 @@ export const getBooks = async (
   return data;
 };
 
+/**
+ * Fetch author data via serverless function
+ * @param authorId - string
+ */
 export const getAuthorInfo = async (authorId: string) => {
   const res = await fetch(
     `/.netlify/functions/getAuthorInfo?authorId=${authorId}`

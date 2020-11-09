@@ -2,6 +2,10 @@ require('isomorphic-fetch');
 const parser = require('fast-xml-parser');
 const options = require('../shared/parserOptions.js');
 
+/**
+ * fetch author data from the Goodreads API
+ * @param authorId - number
+ */
 const getAuthorInfo = async (authorId) => {
   const url = `https://www.goodreads.com/author/show?key=BzOzyH7EB1GpjXuKD6BNw&id=${authorId}.xml `;
   const res = await fetch(url);
@@ -28,6 +32,9 @@ const getAuthorInfo = async (authorId) => {
   return author;
 };
 
+/**
+ * Send author data back to the application
+ */
 exports.handler = async (event) => {
   const authorId = event.queryStringParameters.authorId;
 
