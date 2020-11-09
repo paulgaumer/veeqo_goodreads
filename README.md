@@ -8,7 +8,6 @@
   <h3 align="center">Goodbooks (Veeqo POC)</h3>
 
   <p align="center">
-    My personal website & portoflio
     <br />
     <br />
     <a href="https://veeqo-goodreads-pg.netlify.app/">View Website</a>
@@ -32,7 +31,7 @@
 
 ## About The Project
 
-Proof of concept for Veeqo, based on the GoodReads API.
+Proof of concept for Veeqo, based on the [GoodReads API](https://www.goodreads.com/api/index).
 
 ### Built With
 
@@ -53,21 +52,21 @@ To run the website:
 
 ### Installation
 
-1. Clone the repo
+#### 1. Clone the repo
 
 ```sh
 git clone git@github.com:paulgaumer/veeqo_goodreads.git
 ```
 
-2. Install NPM packages
+#### 2. Install NPM packages
 
 ```sh
 yarn install
 ```
 
-3. Start your local server
+#### 3. Start your local server
 
-To avoid CORS issues when requesting the GoodReads API, calls are made via serverless functions. In order to run these with the server and receive data, you'll need the netlify cli and host an instance of the site on Netlify.
+To avoid CORS issues when requesting the GoodReads API, calls are made via serverless functions. In order to run these with the server and receive data, you'll need the Netlify cli and host an instance of the site on Netlify.
 
 ```sh
 npm install netlify-cli -g
@@ -81,12 +80,22 @@ yarn dev
 -> visit http://localhost:8888/
 ```
 
-If you want to run the app without the serverless function and **NO DATA**
+If you want to run the app without the serverless functions and receive **NO DATA**
 
 ```sh
 yarn start
 
 -> visit http://localhost:3000/
+```
+
+#### 4. Test
+
+Run Cypress tests
+
+```sh
+-> With the server running on http://localhost:8888/
+
+yarn test
 ```
 
 <!-- CONTACT -->
