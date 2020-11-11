@@ -39,7 +39,7 @@ const Card = ({ book, handleAuthorClick }: IProps) => {
   }
 
   return (
-    <motion.div
+    <motion.article
       whileHover={{ scale: 1.03 }}
       data-test="book-card"
       className="relative flex space-x-6 border border-gray-200 rounded-lg hover:shadow-xl">
@@ -68,7 +68,7 @@ const Card = ({ book, handleAuthorClick }: IProps) => {
         </Link>
         </span>
       </div>
-    </motion.div>
+    </motion.article>
   )
 }
 

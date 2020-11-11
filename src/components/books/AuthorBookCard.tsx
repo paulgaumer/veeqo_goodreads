@@ -35,7 +35,7 @@ const AuthorBookCard = ({ book }: any) => {
   }, [book.description])
 
   return (
-    <div className="relative px-4 py-6 border border-gray-200 rounded-lg hover:shadow-md">
+    <article className="relative px-4 py-6 border border-gray-200 rounded-lg hover:shadow-md">
       <div className="flex flex-col items-center px-10 sm:items-start sm:space-x-10 sm:flex-row">
         <Image img={img} alt={title} className="rounded-lg sm:flex-shrink-0" />
 
@@ -79,7 +79,7 @@ const AuthorBookCard = ({ book }: any) => {
           </a>
         </span>
       </div>
-    </div>
+    </article>
   )
 }
 

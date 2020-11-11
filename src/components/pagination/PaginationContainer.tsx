@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-const PaginationContainer = styled.div`
+const PaginationContainer = styled.nav`
   .pagination {
     ${tw`inline-flex shadow-sm`}
   }

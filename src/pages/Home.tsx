@@ -4,12 +4,12 @@ import CardsGrid from '../components/books/CardsContainer';
 
 function Home() {
   return (
-    <div>
+    <>
       <Hero />
-      <div className="mt-36">
+      <section className="mt-36">
         <CardsGrid />
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
 
